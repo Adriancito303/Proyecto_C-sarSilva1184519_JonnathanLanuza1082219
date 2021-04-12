@@ -4,30 +4,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models.Data;
+using Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models;
+using System.IO;
 
 namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
 {
-    public class PRY : Controller
+    public class PROYECT : Controller
     {
-        // GET: PRY
+        // GET: PROYECT
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: PRY/Details/5
+        // GET: PROYECT/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: PRY/Create
+        // GET: PROYECT/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PRY/Create
+        // POST: PROYECT/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -42,13 +45,13 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             }
         }
 
-        // GET: PRY/Edit/5
+        // GET: PROYECT/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: PRY/Edit/5
+        // POST: PROYECT/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -63,13 +66,13 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             }
         }
 
-        // GET: PRY/Delete/5
+        // GET: PROYECT/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: PRY/Delete/5
+        // POST: PROYECT/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
