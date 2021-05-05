@@ -12,7 +12,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
         //    AVL tree = new AVL();
         //}
     }
-    class AVL
+    class AVL 
     {
         class Node
         {
