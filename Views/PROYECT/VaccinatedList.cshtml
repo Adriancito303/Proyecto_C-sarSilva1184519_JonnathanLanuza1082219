@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models.Patients>
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "VaccinatedList";
 }
 
-<h1>Details of patient</h1>
+<h1>Vaccinated List</h1>
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
@@ -42,36 +42,37 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DPI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.town)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.vaccinated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.job)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DPI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.town)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vaccinated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.job)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
