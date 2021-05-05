@@ -14,8 +14,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
         public int? DPI { get; set; }
         public string town { get; set; }
         public string Department { get; set; }
-        [Display(Name = "are you vaccinated?")]
-        public string vaccinated { get; set; }
         public string job { get; set; }
         public int? age { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd;MM;yyyy}", ApplyFormatInEditMode = true)]

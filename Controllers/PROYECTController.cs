@@ -23,34 +23,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         public ActionResult Details()
         {
             return View(Singleton.Instance.MClientsList);
-        }
-        public ActionResult WaitList()
-        {
-            return View();
-        }
+        }   
         public ActionResult VaccinatedList()
         {
             return View(Singleton.Instance.MClientsList);
-        }
-        [HttpPost]
-        public ActionResult VaccinadedList(string vaccinad)
-        {
-            Singleton.Instance.MClientsList.Clear();
-            if (vaccinad == "yes")
-            {
-                for (int i = 0; i < Singleton.Instance.MClientsList.Count() - 1; i++)
-                {
-                    if (Singleton.Instance.MClientsList[i].vaccinated == vaccinad)
-                    {
-                        Singleton.Instance.MClientsList.Add(Singleton.Instance.MClientsList[i]);
-                    }
-                }
-                return View(Singleton.Instance.MClientsList);
-            }
-            else
-            {
-                return View();
-            }
         }
         public ActionResult Search(string Name, string LastName, int DPI)
         {
@@ -80,9 +56,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     DPI = Convert.ToInt32(collection["DPI"]),
                     town = collection["town"],
                     Department = collection["Department"],
-                    vaccinated = collection["vaccinated"],
                     job = collection["job"],
-                    age = Convert.ToInt32(collection["age"])
+                    age = Convert.ToInt32(collection["age"])  
                 };
                 Singleton.Instance.MClientsList.Add(pat);
                 return RedirectToAction(nameof(Index));
