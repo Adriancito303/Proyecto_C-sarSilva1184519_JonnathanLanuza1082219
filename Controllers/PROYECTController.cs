@@ -7,29 +7,46 @@ using System.Threading.Tasks;
 using Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models.Data;
 using Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
 {
-    public class PROYECT : Controller
+    public class PROYECTController : Controller
     {
         // GET: PROYECT
         public ActionResult Index()
         {
-            return View();
+            return View(Singleton.Instance.MClientsList);
         }
 
         // GET: PROYECT/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string Name)
+        {
+            var patti = Singleton.Instance.MClientsList.Find(x => x.Name == Name);
+            return View(patti);
+        }
+        public ActionResult WaitList()
         {
             return View();
         }
-
+        public ActionResult VaccinatedList()
+        {
+            return View();
+        }
+        public ActionResult Search(string Name, string LastName, int DPI)
+        {
+            Singleton.Instance.MClientsList.Clear();
+            return View();
+        }
+        public ActionResult xVaccinated()
+        {
+            return View();
+        }
         // GET: PROYECT/Create
         public ActionResult Create()
         {
             return View();
         }
-
         // POST: PROYECT/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -37,6 +54,18 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
+                var pat = new Models.Patients
+                {
+                    Name = collection["Name"],
+                    LastName = collection["LastName"],
+                    DPI = Convert.ToInt32(collection["DPI"]),
+                    town = collection["town"],
+                    Department = collection["Department"],
+                    vaccinated = collection["vaccinated"],
+                    job = collection["job"],
+                    age = Convert.ToInt32(collection["age"])
+                };
+                Singleton.Instance.MClientsList.Add(pat);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -67,7 +96,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         }
 
         // GET: PROYECT/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string Name)
         {
             return View();
         }
@@ -75,10 +104,11 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         // POST: PROYECT/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(string Name, IFormCollection collection)
         {
             try
             {
+                Singleton.Instance.MClientsList.Clear();
                 return RedirectToAction(nameof(Index));
             }
             catch

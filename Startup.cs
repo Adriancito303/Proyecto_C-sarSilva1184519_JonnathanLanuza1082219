@@ -50,7 +50,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=PROYECT}/{action=Index}/{id?}");
             });
         }
     }

@@ -9,13 +9,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models.Data
     {
         //Instancia única
         private readonly static Singleton MCInstance = new Singleton();
-        public List<PRY> MClientsList;
-        public List<PRY> SecondMClientsList;
+        public List<Patients> MClientsList;
 
         //Constructor
         private Singleton()
         {
-            MClientsList = new List<PRY>();
+            MClientsList = new List<Patients>();
         }
 
         //método de obtencion de la instancia única
