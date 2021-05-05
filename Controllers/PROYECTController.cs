@@ -139,6 +139,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
+                var sr = Singleton.Instance.MClientsList.Find(c => c.Name == Name);
+                Singleton.Instance.MClientsList.Remove(sr);
                 return RedirectToAction(nameof(Index));
             }
             catch
