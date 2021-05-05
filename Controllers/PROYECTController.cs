@@ -37,6 +37,34 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             return View();
         }
+
+        public ActionResult Creategood()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Creategood(IFormCollection collection)
+        {
+            try
+            {
+                var pat = new Models.Patients
+                {
+                    Name = collection["Name"],
+                    LastName = collection["LastName"],
+                    DPI = Convert.ToInt32(collection["DPI"]),
+                    town = collection["town"],
+                    Department = collection["Department"],
+                    job = collection["job"],
+                    age = Convert.ToInt32(collection["age"])
+                };
+                Singleton.Instance.MClientsList.Add(pat);
+                return RedirectToAction(nameof(VaccinatedList));
+            }
+            catch
+            {
+                return View();
+            }
+        }
         // GET: PROYECT/Create
         public ActionResult Create()
         {
@@ -102,11 +130,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
-                //Singleton.Instance.MClientsList.Clear();
-                //if ()
-                //{
-
-                //}
                 return RedirectToAction(nameof(Index));
             }
             catch

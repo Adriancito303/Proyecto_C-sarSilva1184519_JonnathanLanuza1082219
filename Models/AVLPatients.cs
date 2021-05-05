@@ -7,10 +7,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
 {
     public class AVLPatients
     {
-        static void Main(string[] args)
-        {
-            AVL tree = new AVL();
-        }
+        //static void Main(string[] args)
+        //{
+        //    AVL tree = new AVL();
+        //}
     }
     class AVL
     {
