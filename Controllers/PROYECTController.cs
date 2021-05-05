@@ -20,28 +20,33 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         }
 
         // GET: PROYECT/Details/5
+        //Detalles completos de la persona
         public ActionResult Details()
         {
             return View(Singleton.Instance.MClientsList);
-        }   
+        }
+        //Abre vista de la lista de personas ya vacunados
         public ActionResult VaccinatedList()
         {
             return View(Singleton.Instance.MClientsList);
         }
+        //Busqueda de personas en la lista de personas a ser vacunados
         public ActionResult Search(string Name, string LastName, int DPI)
         {
+            //busqueda por medio de AVL(llamar clase AVL)
             Singleton.Instance.MClientsList.Clear();
             return View();
         }
+        //Abre vista del porcentaje de las personas ya vacunadas
         public ActionResult xVaccinated()
         {
             return View();
         }
-
         public ActionResult Creategood()
         {
             return View();
         }
+        //Crea lista de ya vacunados
         [HttpPost]
         public ActionResult Creategood(IFormCollection collection)
         {
@@ -58,6 +63,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     age = Convert.ToInt32(collection["age"])
                 };
                 Singleton.Instance.MClientsList.Add(pat);
+                //HASH de personas vacunadas
                 return RedirectToAction(nameof(VaccinatedList));
             }
             catch
@@ -71,6 +77,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             return View();
         }
         // POST: PROYECT/Create
+        //Crea lista de no vacunados 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -88,6 +95,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     age = Convert.ToInt32(collection["age"])  
                 };
                 Singleton.Instance.MClientsList.Add(pat);
+                //HASH de personas no vacunadas
+                //Enviar codigo hash a AVL para ordenar
                 return RedirectToAction(nameof(Index));
             }
             catch
