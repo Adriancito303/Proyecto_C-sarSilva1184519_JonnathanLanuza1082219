@@ -41,11 +41,52 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             return View(Singleton.Instance.MClientsList);
         }
         //Busqueda de personas en la lista de personas a ser vacunados
+        [HttpPost]
         public ActionResult Search(string Name, string LastName, int DPI)
         {
-            //busqueda por medio de AVL(llamar clase AVL)
+            ViewData["SearchName"] = Name;
+            ViewData["SearchLastName"] = LastName;
+            ViewData["SearchDPI"] = DPI;
             Singleton.Instance.MClientsList.Clear();
-            return View();
+
+            if (Name != null)
+            {
+                for (int i = 0; i < Singleton.Instance.MClientsList.Count() - 1; i++)
+                {
+                    if (Singleton.Instance.MClientsList[i].Name == Name)
+                    {
+                        Singleton.Instance.MClientsList.Add(Singleton.Instance.MClientsList[i]);
+                    }
+                }
+                return View(Singleton.Instance.MClientsList);
+            }
+            else if (LastName != null)
+            {
+                for (int i = 0; i < Singleton.Instance.MClientsList.Count() - 1; i++)
+                {
+                    if (Singleton.Instance.MClientsList[i].LastName == LastName)
+                    {
+                        Singleton.Instance.MClientsList.Add(Singleton.Instance.MClientsList[i]);
+                    }
+                }
+                return View(Singleton.Instance.MClientsList);
+            }
+            else if (DPI > 0)
+            {
+                for (int i = 0; i < Singleton.Instance.MClientsList.Count() - 1; i++)
+                {
+                    if (Singleton.Instance.MClientsList[i].DPI == DPI   )
+                    {
+                        Singleton.Instance.MClientsList.Add(Singleton.Instance.MClientsList[i]);
+                    }
+                }
+                return View(Singleton.Instance.MClientsList);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+            //busqueda por medio de AVL(llamar clase AVL)
         }
         //Abre vista del porcentaje de las personas ya vacunadas
         public ActionResult xVaccinated()
