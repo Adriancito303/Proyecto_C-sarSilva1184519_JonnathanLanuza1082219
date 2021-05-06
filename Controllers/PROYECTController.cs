@@ -14,6 +14,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
     public class PROYECTController : Controller
     {
         // GET: PROYECT
+        //Modificar tamaño tabla hash
+        public HASHT tableH = new HASHT(100);
         public ActionResult Index()
         {
             return View(Singleton.Instance.MClientsList);
@@ -69,6 +71,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 };
                 Singleton.Instance.MCsecondList.Add(pat);
                 //HASH de personas vacunadas
+                int Code = tableH.Fhash(pat.Name, pat.LastName, pat.age);
+                tableH.array[Code].Add(pat);
                 return RedirectToAction(nameof(VaccinatedList));
             }
             catch
@@ -101,7 +105,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 };
                 Singleton.Instance.MClientsList.Add(pat);
                 //HASH de personas no vacunadas
+                int Code = tableH.Fhash(pat.Name, pat.LastName, pat.age);
+                tableH.array[Code].Add(pat);
                 //Enviar codigo hash a AVL para ordenar
+                //AVLPatients.Add(pat.DPI);
                 return RedirectToAction(nameof(Index));
             }
             catch

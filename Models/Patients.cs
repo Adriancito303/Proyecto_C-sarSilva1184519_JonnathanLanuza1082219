@@ -11,11 +11,11 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
         [Required]
         public string Name { get; set; }
         public string LastName { get; set; }
-        public int? DPI { get; set; }
+        public int DPI { get; set; }
         public string town { get; set; }
         public string Department { get; set; }
         public string job { get; set; }
-        public int? age { get; set; }
+        public int age { get; set; }
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
     }
