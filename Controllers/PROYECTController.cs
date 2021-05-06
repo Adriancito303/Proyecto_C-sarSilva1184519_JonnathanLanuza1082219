@@ -8,6 +8,7 @@ using Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models.Data;
 using Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using System.Web;
 
 namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
 {
@@ -143,8 +144,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 Singleton.Instance.MCsecondList.Add(pat);
                 vac += 1;
                 //HASH de personas vacunadas
-                int Code = tableH.Fhash(pat.Name, pat.LastName);
-                tableH.array[Code].Add(pat);
+                int Code = tableH2.Fhash(pat.Name, pat.LastName);
+                tableH2.array[Code].Add(pat);
                 return RedirectToAction(nameof(VaccinateL));
             }
             catch
