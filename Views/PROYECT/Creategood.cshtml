@@ -29,17 +29,46 @@
             </div>
             <div class="form-group">
                 <label asp-for="town" class="control-label"></label>
-                <input asp-for="town" class="form-control" />
+
                 <span asp-validation-for="town" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Department" class="control-label"></label>
-                <input asp-for="Department" class="form-control" />
+                <select>
+                    <option value="AltaVerapaz">Alta Verapaz</option>
+                    <option value="BajaVerapaz">Baja Verapaz</option>
+                    <option value="Chimaltenango">Chimaltenango</option>
+                    <option value="Chiquimula">Chiquimula</option>
+                    <option value="Guatemala">Guatemala</option>
+                    <option value="ElProgreso">El Progreso</option>
+                    <option value="Escuintla">Escuintla</option>
+                    <option value="Huehuetenango">Huehuetenango</option>
+                    <option value="Izabal">Izabal</option>
+                    <option value="Jalapa">Jalapa</option>
+                    <option value="Jutiapa">Jutiapa</option>
+                    <option value="Peten">Peten</option>
+                    <option value="Quetzaltenango">Quetzaltenango</option>
+                    <option value="Quiché">Quiché</option>
+                    <option value="Retalhuleu">Retalhuleu</option>
+                    <option value="Sacatepequez">Sacatepequez</option>
+                    <option value="SanMarcos">San Marcos</option>
+                    <option value="SantaRosa">Santa Rosa</option>
+                    <option value="Solola">Solola</option>
+                    <option value="Suchitepequez">Suchitepequez</option>
+                    <option value="Totonicapan">Totonicapan</option>
+                    <option value="Zacapa">Zacapa</option>
+                </select>
                 <span asp-validation-for="Department" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Priority" class="control-label"></label>
-                <input asp-for="Priority" class="form-control" />
+                <select>
+                    <option value="HPersonell">Health Personnel</option>
+                    <option value="Over70">Age over 70</option>
+                    <option value="Between51n70">Age between 51 and 70</option>
+                    <option value="EWorkers">Essential worker</option>
+                    <option value="18to50">Age between 18 and 50</option>
+                </select>
                 <span asp-validation-for="Priority" class="text-danger"></span>
             </div>
             <div class="form-group">
