@@ -108,7 +108,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 int Code = tableH.Fhash(pat.Name, pat.LastName, pat.age);
                 tableH.array[Code].Add(pat);
                 //Enviar codigo hash a AVL para ordenar
-                //AVLPatients.Add(pat.DPI);
+                //AVLPatients.Add(pat.DPI);--------------------------------------------------------------------
                 return RedirectToAction(nameof(Index));
             }
             catch
