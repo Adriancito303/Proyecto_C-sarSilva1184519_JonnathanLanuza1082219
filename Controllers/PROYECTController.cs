@@ -96,7 +96,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 }
                 return View(Singleton.Instance.MCsecondList);
             }
-            if (Priority != null)
+            else if (Priority != null)
             {
                 for (int i = 0; i < busqueda.Count(); i++)
                 {
