@@ -16,7 +16,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
             Code %= 100;
             return Code;
         }
-
+        //a
         public HASHT(int Cant)
         {
             array = new List<Patients>[Cant];
