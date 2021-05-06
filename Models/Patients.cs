@@ -14,8 +14,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
         public int DPI { get; set; }
         public string town { get; set; }
         public string Department { get; set; }
-        public string job { get; set; }
-        public int age { get; set; }
+        [Display(Name = "Select your status")]
+        public string Priority { get; set; }
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
     }

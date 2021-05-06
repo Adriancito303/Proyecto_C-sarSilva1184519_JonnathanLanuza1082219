@@ -9,10 +9,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
     {
         public List<Patients>[] array;
         public List<Patients> Papv;
-        public int Fhash(string Name, string LastName, int AGE)
+        public int Fhash(string Name, string LastName)
         {
             //Modificar para recibir valor
-            int Code = (Name.Length * LastName.Length)/AGE;
+            int Code = (Name.Length * LastName.Length);
             Code %= 100;
             return Code;
         }

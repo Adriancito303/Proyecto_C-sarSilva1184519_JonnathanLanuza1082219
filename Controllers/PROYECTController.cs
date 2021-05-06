@@ -115,13 +115,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     DPI = Convert.ToInt32(collection["DPI"]),
                     town = collection["town"],
                     Department = collection["Department"],
-                    job = collection["job"],
-                    age = Convert.ToInt32(collection["age"])
+                    Priority = collection["job"]
                 };
                 Singleton.Instance.MCsecondList.Add(pat);
                 vac += 1;
                 //HASH de personas vacunadas
-                int Code = tableH.Fhash(pat.Name, pat.LastName, pat.age);
+                int Code = tableH.Fhash(pat.Name, pat.LastName);
                 tableH.array[Code].Add(pat);
                 return RedirectToAction(nameof(VaccinatedList));
             }
@@ -150,13 +149,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     DPI = Convert.ToInt32(collection["DPI"]),
                     town = collection["town"],
                     Department = collection["Department"],
-                    job = collection["job"],
-                    age = Convert.ToInt32(collection["age"])
+                    Priority = collection["job"]
                 };
                 Singleton.Instance.MClientsList.Add(pat);
                 nvac += 1;
                 //HASH de personas no vacunadas
-                int Code = tableH.Fhash(pat.Name, pat.LastName, pat.age);
+                int Code = tableH.Fhash(pat.Name, pat.LastName);
                 tableH.array[Code].Add(pat);
                 //Enviar codigo hash a AVL para ordenar
                 //AVLPatients.Add(pat.DPI);--------------------------------------------------------------------
