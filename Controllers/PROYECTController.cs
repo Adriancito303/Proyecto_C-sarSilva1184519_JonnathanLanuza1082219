@@ -22,13 +22,15 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         int vac = 0;
         int nvac = 0;
         public percentagepatients patper = new percentagepatients();
+        public List<Patients> busqueda = new List<Patients>();
+        public Patients Fecha = new Patients();
         //Modificar tamaño tabla hash
         public HASHT tableH = new HASHT(100);
         public ActionResult Index()
         {
+            Singleton.Instance.MCsecondList.Clear();
             return View(Singleton.Instance.MClientsList);
         }
-
         // GET: PROYECT/Details/5
         //Detalles completos de la persona
         public ActionResult Details()
@@ -52,44 +54,44 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             ViewData["SearchName"] = Name;
             ViewData["SearchLastName"] = LastName;
             ViewData["SearchDPI"] = DPI;
-            Singleton.Instance.MClientsList.Clear();
+            busqueda = Singleton.Instance.MClientsList;
 
             if (Name != null)
             {
-                for (int i = 0; i < Singleton.Instance.MClientsList.Count() - 1; i++)
+                for (int i = 0; i < busqueda.Count(); i++)
                 {
-                    if (Singleton.Instance.MClientsList[i].Name == Name)
+                    if (busqueda[i].Name == Name)
                     {
-                        Singleton.Instance.MClientsList.Add(Singleton.Instance.MClientsList[i]);
+                        Singleton.Instance.MCsecondList.Add(busqueda[i]);
                     }
                 }
-                return View(Singleton.Instance.MClientsList);
+                return View(Singleton.Instance.MCsecondList);
             }
             else if (LastName != null)
             {
-                for (int i = 0; i < Singleton.Instance.MClientsList.Count() - 1; i++)
+                for (int i = 0; i < busqueda.Count(); i++)
                 {
-                    if (Singleton.Instance.MClientsList[i].LastName == LastName)
+                    if (busqueda[i].LastName == LastName)
                     {
-                        Singleton.Instance.MClientsList.Add(Singleton.Instance.MClientsList[i]);
+                        Singleton.Instance.MCsecondList.Add(busqueda[i]);
                     }
                 }
-                return View(Singleton.Instance.MClientsList);
+                return View(Singleton.Instance.MCsecondList);
             }
             else if (DPI > 0)
             {
-                for (int i = 0; i < Singleton.Instance.MClientsList.Count() - 1; i++)
+                for (int i = 0; i < busqueda.Count(); i++)
                 {
-                    if (Singleton.Instance.MClientsList[i].DPI == DPI   )
+                    if (busqueda[i].DPI == DPI)
                     {
-                        Singleton.Instance.MClientsList.Add(Singleton.Instance.MClientsList[i]);
+                        Singleton.Instance.MCsecondList.Add(busqueda[i]);
                     }
                 }
-                return View(Singleton.Instance.MClientsList);
+                return View(Singleton.Instance.MCsecondList);
             }
             else
             {
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             //busqueda por medio de AVL(llamar clase AVL)
         }
@@ -121,6 +123,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     town = collection["town"],
                     Department = collection["Department"],
                     Priority = collection["job"]
+                    //Date = collection["Date"].ToString("dd/MM/yyyy")
                 };
                 Singleton.Instance.MCsecondList.Add(pat);
                 vac += 1;
@@ -155,6 +158,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     town = collection["town"],
                     Department = collection["Department"],
                     Priority = collection["job"]
+                    //Date = collection["Date"].ToString("dd/MM/yyyy")
                 };
                 Singleton.Instance.MClientsList.Add(pat);
                 nvac += 1;
@@ -201,25 +205,34 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         }
 
         // GET: PROYECT/Delete/5
-        public ActionResult Delete(string Name)
+        public ActionResult Delete(int Dpi)
         {
+            //var sr = Singleton.Instance.MClientsList.Find(c => c.Name == Name);
+            //for (int i = 0; i < Singleton.Instance.MClientsList.Count(); i++)
+            //{
+            //    do
+            //    {
+            //        Singleton.Instance.MClientsList.Remove(sr);
+            //    } while (Name == Singleton.Instance.MClientsList[i].Name);
+            //}
+            //return View("Search", Singleton.Instance.MClientsList);
             return View();
         }
 
         // POST: PROYECT/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(string Name, IFormCollection collection)
+        public ActionResult Delete(int dpi, IFormCollection collection)
         {
             try
             {
-                var sr = Singleton.Instance.MClientsList.Find(c => c.Name == Name);
-                Singleton.Instance.MClientsList.Remove(sr);
-                return RedirectToAction(nameof(Index));
+                var st = Singleton.Instance.MClientsList.Find(x => x.DPI == dpi);
+                Singleton.Instance.MClientsList.Remove(st);
+                return View("Search", st);
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Index));
             }
         }
     }
