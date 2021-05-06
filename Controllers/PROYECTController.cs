@@ -11,19 +11,26 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
 {
-    //Priority 1
-    //Priority 2a
-    //Priority 2b
-    //Priority 3
-    //Priority 4
+    #region LISTPRIORITYS
+    //Priority 1 -> Health Personnel
+    //Priority 2a -> Age over 70
+    //Priority 2b -> Age between 51 and 70
+    //Priority 3 -> Essential worker
+    //Priority 4 -> Age between 18 and 50
+    #endregion
+
     public class PROYECTController : Controller
     {
         // GET: PROYECT
+        #region EXTRAS
         int vac = 0;
         int nvac = 0;
         public percentagepatients patper = new percentagepatients();
         public List<Patients> busqueda = new List<Patients>();
         public Patients Fecha = new Patients();
+        public List<Patients> simulacion = new List<Patients>();
+        #endregion
+
         //Modificar tamaño tabla hash
         public HASHT tableH = new HASHT(100);
         public ActionResult Index()
@@ -49,11 +56,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         }
         //Busqueda de personas en la lista de personas a ser vacunados
         [HttpPost]
-        public ActionResult Search(string Name, string LastName, int DPI)
+        public ActionResult Search(string Name, string LastName, int DPI, string Priority)
         {
             ViewData["SearchName"] = Name;
             ViewData["SearchLastName"] = LastName;
             ViewData["SearchDPI"] = DPI;
+            ViewData["SearchPriority"] = Priority;
             busqueda = Singleton.Instance.MClientsList;
 
             if (Name != null)
@@ -83,6 +91,17 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 for (int i = 0; i < busqueda.Count(); i++)
                 {
                     if (busqueda[i].DPI == DPI)
+                    {
+                        Singleton.Instance.MCsecondList.Add(busqueda[i]);
+                    }
+                }
+                return View(Singleton.Instance.MCsecondList);
+            }
+            if (Priority != null)
+            {
+                for (int i = 0; i < busqueda.Count(); i++)
+                {
+                    if (busqueda[i].Priority == Priority)
                     {
                         Singleton.Instance.MCsecondList.Add(busqueda[i]);
                     }
