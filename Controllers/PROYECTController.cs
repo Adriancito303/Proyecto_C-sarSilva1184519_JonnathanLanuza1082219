@@ -175,7 +175,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     DPI = Convert.ToInt32(collection["DPI"]),
                     town = collection["town"],
                     Department = collection["Department"],
-                    Priority = collection["job"]
+                    Priority = collection["Priority"]
                     //Date = collection["Date"].ToString("dd/MM/yyyy")
                 };
                 Singleton.Instance.MClientsList.Add(pat);
