@@ -11,6 +11,11 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
 {
+    //Priority 1
+    //Priority 2a
+    //Priority 2b
+    //Priority 3
+    //Priority 4
     public class PROYECTController : Controller
     {
         // GET: PROYECT
