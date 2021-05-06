@@ -21,7 +21,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
 
     public class PROYECTController : Controller
     {
-        // GET: PROYECT
         #region EXTRAS
         int vac = 0;
         int nvac = 0;
@@ -30,7 +29,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         public Patients Fecha = new Patients();
         public List<Patients> simulacion = new List<Patients>();
         #endregion
-
+        // GET: PROYECT
         //Modificar tamaño tabla hash
         public HASHT tableH = new HASHT(100);
         public ActionResult Index()
