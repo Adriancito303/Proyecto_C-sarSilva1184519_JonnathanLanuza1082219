@@ -16,7 +16,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
         public string Department { get; set; }
         public string job { get; set; }
         public int? age { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd;MM;yyyy}", ApplyFormatInEditMode = true)]
-        public Nullable<System.DateTime> Date { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Date { get; set; }
     }
 }

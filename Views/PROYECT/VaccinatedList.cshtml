@@ -36,7 +36,7 @@
                 @Html.DisplayNameFor(model => model.age)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model.Date.ToString())
             </th>
             <th></th>
         </tr>
@@ -67,7 +67,7 @@
                     @Html.DisplayFor(modelItem => item.age)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.Date.ToString())
                 </td>
             </tr>
         }

@@ -15,7 +15,7 @@
 </p>
 <p style="color:#ffd800">↓ CLICK HERE IF YOU'RE ALREADY VACCINATED</p>
 <p>
-    <a asp-action="VaccinatedList">Vaccinated List</a>
+    <a asp-action="VaccinateL">Vaccinated List</a>
 </p>
 <form method="post">
     <p style="color:#ff0000">USE ONLY ONE VALUE PER SEARCH </p>
@@ -39,9 +39,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.town)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -60,9 +57,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.town)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

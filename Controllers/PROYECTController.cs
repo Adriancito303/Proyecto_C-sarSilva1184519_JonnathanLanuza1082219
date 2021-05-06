@@ -26,6 +26,11 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             return View(Singleton.Instance.MClientsList);
         }
         //Abre vista de la lista de personas ya vacunados
+        public ActionResult VaccinateL()
+        {
+            return View(Singleton.Instance.MCsecondList);
+        }
+        //Lista de por vacunar
         public ActionResult VaccinatedList()
         {
             return View(Singleton.Instance.MClientsList);
@@ -62,7 +67,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     job = collection["job"],
                     age = Convert.ToInt32(collection["age"])
                 };
-                Singleton.Instance.MClientsList.Add(pat);
+                Singleton.Instance.MCsecondList.Add(pat);
                 //HASH de personas vacunadas
                 return RedirectToAction(nameof(VaccinatedList));
             }
@@ -106,7 +111,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         }
 
         // GET: PROYECT/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string Name)
         {
             return View();
         }
@@ -114,11 +119,19 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         // POST: PROYECT/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Patients Namess)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var ptien = (from m in Singleton.Instance.MClientsList where m.Name == Namess.Name select m).First();
+                if (!ModelState.IsValid)
+                {
+                    return View(ptien);
+                }
+                else
+                {
+                    return RedirectToAction(nameof(Index));
+                }
             }
             catch
             {
