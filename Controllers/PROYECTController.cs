@@ -14,6 +14,9 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
     public class PROYECTController : Controller
     {
         // GET: PROYECT
+        int vac = 0;
+        int nvac = 0;
+        public percentagepatients patper = new percentagepatients();
         //Modificar tamaño tabla hash
         public HASHT tableH = new HASHT(100);
         public ActionResult Index()
@@ -49,6 +52,11 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult xVaccinated(int vac, int nvac)
+        {
+            return View(patper.Perc(vac, nvac));
+        }
         public ActionResult Creategood()
         {
             return View();
@@ -70,6 +78,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     age = Convert.ToInt32(collection["age"])
                 };
                 Singleton.Instance.MCsecondList.Add(pat);
+                vac += 1;
                 //HASH de personas vacunadas
                 int Code = tableH.Fhash(pat.Name, pat.LastName, pat.age);
                 tableH.array[Code].Add(pat);
@@ -101,9 +110,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     town = collection["town"],
                     Department = collection["Department"],
                     job = collection["job"],
-                    age = Convert.ToInt32(collection["age"])  
+                    age = Convert.ToInt32(collection["age"])
                 };
                 Singleton.Instance.MClientsList.Add(pat);
+                nvac += 1;
                 //HASH de personas no vacunadas
                 int Code = tableH.Fhash(pat.Name, pat.LastName, pat.age);
                 tableH.array[Code].Add(pat);
