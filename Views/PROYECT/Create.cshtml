@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="town" class="control-label"></label>
-                <select>
+                <select name="town">
                     <option value="Coban">Coban</option>
                     <option value="SantaCruzVerapaz">Santa Cruz Verapaz</option>
                     <option value="SanCristobalVerapaz">San Cristobal Verapaz</option>
@@ -366,7 +366,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Department" class="control-label"></label>
-                <select>
+                <select name="Department">
                     <option value="AltaVerapaz">Alta Verapaz</option>
                     <option value="BajaVerapaz">Baja Verapaz</option>
                     <option value="Chimaltenango">Chimaltenango</option>
@@ -394,12 +394,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Priority" class="control-label"></label>
-                <select>
-                    <option value="HPersonell">Health Personnel</option>
-                    <option value="Over70">Age over 70</option>
-                    <option value="Between51n70">Age between 51 and 70</option>
-                    <option value="EWorkers">Essential worker</option>
-                    <option value="18to50">Age between 18 and 50</option>
+                <select name="Priority">
+                    <option value="1">Health Personnel</option>
+                    <option value="2a">Age over 70</option>
+                    <option value="2b">Age between 51 and 70</option>
+                    <option value="3">Essential worker</option>
+                    <option value="4">Age between 18 and 50</option>
                 </select>
                 <span asp-validation-for="Priority" class="text-danger"></span>
             </div>
