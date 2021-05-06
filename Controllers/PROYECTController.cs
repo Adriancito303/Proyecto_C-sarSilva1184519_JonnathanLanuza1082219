@@ -28,10 +28,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         public List<Patients> busqueda = new List<Patients>();
         public Patients Fecha = new Patients();
         public List<Patients> simulacion = new List<Patients>();
+        public List<Patients> register = new List<Patients>();
+        public HASHT tableH = new HASHT(100);
+        public HASHT2 tableH2 = new HASHT2(100);
         #endregion
         // GET: PROYECT
-        //Modificar tamaño tabla hash
-        public HASHT tableH = new HASHT(100);
+        //Modificar tamaño tabla 
         public ActionResult Index()
         {
             Singleton.Instance.MCsecondList.Clear();
@@ -47,11 +49,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         public ActionResult VaccinateL()
         {
             return View(Singleton.Instance.MCsecondList);
-        }
-        //Lista de por vacunar
-        public ActionResult VaccinatedList()
-        {
-            return View(Singleton.Instance.MClientsList);
         }
         //Busqueda de personas en la lista de personas a ser vacunados
         [HttpPost]
@@ -148,7 +145,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 //HASH de personas vacunadas
                 int Code = tableH.Fhash(pat.Name, pat.LastName);
                 tableH.array[Code].Add(pat);
-                return RedirectToAction(nameof(VaccinatedList));
+                return RedirectToAction(nameof(VaccinateL));
             }
             catch
             {
