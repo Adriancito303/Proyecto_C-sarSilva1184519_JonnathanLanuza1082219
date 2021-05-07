@@ -143,6 +143,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
+                string dpi = collection["DPI"].ToString();
+                if (dpi.Length != 13)
+                {
+                    ModelState.AddModelError("DPI", "Please enter 13-digit DPI number");
+                    return View("Create");
+                }
                 var pat = new Models.Patients
                 {
                     Name = collection["Name"],
@@ -178,6 +184,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
+                string dpi = collection["DPI"].ToString();
+                if (dpi.Length != 13)
+                {
+                    ModelState.AddModelError("DPI", "Please enter 13-digit DPI number");
+                    return View("Create");
+                }
                 var pat = new Models.Patients
                 {
                     Name = collection["Name"],
