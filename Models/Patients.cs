@@ -23,6 +23,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
         public string Priority { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
     }
 }

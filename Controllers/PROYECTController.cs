@@ -138,8 +138,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     DPI = Convert.ToInt32(collection["DPI"]),
                     town = collection["town"],
                     Department = collection["Department"],
-                    Priority = collection["Priority"]
-                    //Date = collection["Date"].ToString("dd/MM/yyyy")
+                    Priority = collection["Priority"],
+                    Date = Convert.ToDateTime(collection["Date"])
                 };
                 Singleton.Instance.MCsecondList.Add(pat);
                 vac += 1;
@@ -173,16 +173,18 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     DPI = Convert.ToInt32(collection["DPI"]),
                     town = collection["town"],
                     Department = collection["Department"],
-                    Priority = collection["Priority"]
-                    //Date = collection["Date"].ToString("dd/MM/yyyy")
+                    Priority = collection["Priority"],
+                    Date = Convert.ToDateTime(collection["Date"])
                 };
                 Singleton.Instance.MClientsList.Add(pat);
                 nvac += 1;
                 //HASH de personas no vacunadas
                 int Code = tableH.Fhash(pat.Name, pat.LastName);
                 tableH.array[Code].Add(pat);
+                #region notouch
                 //Enviar codigo hash a AVL para ordenar
-                //AVLPatients.Add(pat.DPI);--------------------------------------------------------------------
+                //AVLPatients.Add(pat.DPI);
+                #endregion
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -223,6 +225,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         // GET: PROYECT/Delete/5
         public ActionResult Delete(int Dpi)
         {
+            #region notouch2
             //var sr = Singleton.Instance.MClientsList.Find(c => c.Name == Name);
             //for (int i = 0; i < Singleton.Instance.MClientsList.Count(); i++)
             //{
@@ -232,6 +235,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             //    } while (Name == Singleton.Instance.MClientsList[i].Name);
             //}
             //return View("Search", Singleton.Instance.MClientsList);
+            #endregion
             return View();
         }
 
