@@ -40,15 +40,15 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             Singleton.Instance.MCsecondList.Clear();
             return View(Singleton.Instance.MClientsList);
         }
-        //public ActionResult Simulation()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult Simulation(int date)
-        //{
-        //    return View();
-        //}
+        public ActionResult Simulation()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Simulation(string Name)
+        {
+            return View();
+        }
 
         // GET: PROYECT/Details/5
         //Detalles completos de la persona
