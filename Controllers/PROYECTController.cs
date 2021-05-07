@@ -188,7 +188,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         //Crea lista de no vacunados 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(IFormCollection collection, object AVLPatients)
         {
             try
             {
