@@ -49,6 +49,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         //{
         //    return View();
         //}
+
         // GET: PROYECT/Details/5
         //Detalles completos de la persona
         public ActionResult Details()
@@ -69,7 +70,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             ViewData["SearchDPI"] = DPI;
             ViewData["SearchPriority"] = Priority;
             busqueda = Singleton.Instance.MClientsList;
-
+            #region Search
             if (Name != null)
             {
                 for (int i = 0; i < busqueda.Count(); i++)
@@ -119,6 +120,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 return RedirectToAction(nameof(Index));
             }
             //busqueda por medio de AVL(llamar clase AVL)
+            #endregion
         }
         //Abre vista del porcentaje de las personas ya vacunadas
         public ActionResult xVaccinated()
@@ -128,7 +130,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         [HttpPost]
         public ActionResult xVaccinated(int vac, int nvac)
         {
-            return View(patper.Perc(vac, nvac));
+            patper.Perc(vac, nvac);
+            return View();
         }
         public ActionResult Creategood()
         {

@@ -17,10 +17,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Models
 
         public int Perc(int vac, int nvac)
         {
-            nonVaccinated = nvac;
-            vaccinated = vac;
-            Tvac = 0;
-            if (nvac >= 0)
+            int nonVaccinated = nvac;
+            int vaccinated = vac;
+            int Tvac = 0;
+            if (nvac > 0)
             {
                 Tvac = vac / nvac;
                 Tvac %= 100;
