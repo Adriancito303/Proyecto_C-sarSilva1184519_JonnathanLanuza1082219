@@ -188,16 +188,16 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         //Crea lista de no vacunados 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection, object AVLPatients)
+        public ActionResult Create(IFormCollection collection)
         {
             try
             {
-                string dpi = collection["DPI"].ToString();
-                if (dpi.Length != 13)
-                {
-                    ModelState.AddModelError("DPI", "Please enter 13-digit DPI number");
-                    return View("Create");
-                }
+                //string dpi = collection["DPI"].ToString();
+                //if (dpi.Length != 13)
+                //{
+                //    ModelState.AddModelError("DPI", "Please enter 13-digit DPI number");
+                //    return View("Create");
+                //}
                 var pat = new Models.Patients
                 {
                     Name = collection["Name"],
