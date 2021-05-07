@@ -49,7 +49,15 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             return View();
         }
-
+        public ActionResult Manual()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Manual(int i)
+        {
+            return View();
+        }
         // GET: PROYECT/Details/5
         //Detalles completos de la persona
         public ActionResult Details()
