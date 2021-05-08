@@ -26,6 +26,9 @@
     Search by DPI: <input type="text" name="DPI" value="@ViewData["SearchDPI"]" /></br>
     Search by Status: <input type="text" name="Priority" value="@ViewData["SearchPriority"]" /></br>
     <input type="submit" value="Search" asp-action="Search" /></br>
+    </br>
+    <p>CLICK TO SEND THREE PATIENTS TO VACCINATION</p>
+    <input type="submit" value="Vaccinate" disabled asp-action="VaccinateL"/> </br>
 </form>
 </br>
 <table class="table" border="1">

@@ -32,7 +32,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         public List<Patients> register = new List<Patients>();
         public HASHT tableH = new HASHT(100);
         public HASHT2 tableH2 = new HASHT2(100);
-        public List<Patients> mover = new List<Patients>();
+        public List<Patients> move = new List<Patients>();
         #endregion
         // GET: PROYECT
         //Modificar tamaño tabla 
@@ -40,20 +40,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             return View();
         }
-        public ActionResult move()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                mover[i] = Singleton.Instance.MClientsList[i];
-                Singleton.Instance.MCsecondList.Add(Singleton.Instance.MClientsList[i]);
-                Singleton.Instance.MClientsList.Remove(mover[i]);
-            }
-            return View();
-        }
         #region Simulacion
         public ActionResult Simulation()
         {
-            Singleton.Instance.MCsecondList.Clear();
+            //Singleton.Instance.MCsecondList.Clear();
             return View(Singleton.Instance.MClientsList);
         }
         #endregion
@@ -63,10 +53,32 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             return View(Singleton.Instance.MClientsList);
         }
-        //Abre vista de la lista de personas ya vacunados
+
         public ActionResult VaccinateL()
         {
             return View(Singleton.Instance.MCsecondList);
+        }
+
+        //Abre vista de la lista de personas ya vacunados
+        [HttpPost]
+        public ActionResult VaccinateL(IFormCollection collection)
+        {
+            if (nvac <= 1)
+            {
+                return View();
+            }
+            else
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    //move[i] = Singleton.Instance.MClientsList[i];
+                    Singleton.Instance.MCsecondList.Add(Singleton.Instance.MClientsList[i]);
+                    Singleton.Instance.MClientsList.Remove(Singleton.Instance.MClientsList[i]);
+                    vac = vac + 1;
+                    nvac = nvac - 1;
+                }
+                return RedirectToAction(nameof(VaccinateL));
+            }
         }
         //Busqueda de personas en la lista de personas a ser vacunados
         [HttpPost]
