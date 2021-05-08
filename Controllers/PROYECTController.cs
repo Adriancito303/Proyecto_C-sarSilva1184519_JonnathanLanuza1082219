@@ -23,8 +23,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
     public class PROYECTController : Controller
     {
         #region EXTRAS
-        int vac = 0;
-        int nvac = 0;
+        public int vac = 0;
+        public int nvac = 0;
         public percentagepatients patper = new percentagepatients();
         public List<Patients> busqueda = new List<Patients>();
         public Patients Fecha = new Patients();
@@ -32,6 +32,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         public List<Patients> register = new List<Patients>();
         public HASHT tableH = new HASHT(100);
         public HASHT2 tableH2 = new HASHT2(100);
+        public List<Patients> mover = new List<Patients>();
         #endregion
         // GET: PROYECT
         //Modificar tamaño tabla 
@@ -121,13 +122,17 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         //Abre vista del porcentaje de las personas ya vacunadas
         public ActionResult xVaccinated()
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult xVaccinated(int vac, int nvac)
-        {
-            patper.Perc(vac, nvac);
-            return View();
+            patper.nonVaccinated = nvac;
+            patper.vaccinated = vac;
+            if (nvac == 0)
+            {
+                patper.Tvac = 100;
+            }
+            else
+            {
+                patper.Tvac = (vac / nvac) * 100;
+            }
+            return View(patper);
         }
         public ActionResult Creategood()
         {
@@ -156,7 +161,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     Date = Convert.ToDateTime(collection["Date"])
                 };
                 Singleton.Instance.MCsecondList.Add(pat);
-                nvac += 1;
+                vac = vac + 1;
                 //HASH de personas no vacunadas
                 int Code = tableH2.Fhash(pat.Name, pat.LastName);
                 tableH2.array[Code].Add(pat);
@@ -218,7 +223,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     Date = Convert.ToDateTime(collection["Date"])
                 };
                 Singleton.Instance.MClientsList.Add(pat);
-                nvac += 1;
+                nvac = nvac + 1;
                 //HASH de personas no vacunadas
                 int Code = tableH.Fhash(pat.Name, pat.LastName);
                 tableH.array[Code].Add(pat);
@@ -235,27 +240,21 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         }
 
         // GET: PROYECT/Edit/5
-        public ActionResult Edit(string Name)
+        public ActionResult Edit(DateTime date)
         {
-            return View();
+            var std = Singleton.Instance.MClientsList.Where(s => s.Date == date).FirstOrDefault();
+            return View(std);
         }
 
         // POST: PROYECT/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Patients Namess)
+        public ActionResult Edit(Patients std, IFormCollection collection)
         {
             try
             {
-                var ptien = (from m in Singleton.Instance.MClientsList where m.Name == Namess.Name select m).First();
-                if (!ModelState.IsValid)
-                {
-                    return View(ptien);
-                }
-                else
-                {
-                    return RedirectToAction(nameof(Simulation));
-                }
+                var Date = std.Date;
+                return RedirectToAction(nameof(Simulation));
             }
             catch
             {
@@ -266,15 +265,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         // GET: PROYECT/Delete/5
         public ActionResult Delete(int Dpi)
         {
-            //var sr = Singleton.Instance.MClientsList.Find(c => c.Name == Name);
-            //for (int i = 0; i < Singleton.Instance.MClientsList.Count(); i++)
-            //{
-            //    do
-            //    {
-            //        Singleton.Instance.MClientsList.Remove(sr);
-            //    } while (Name == Singleton.Instance.MClientsList[i].Name);
-            //}
-            //return View("Search", Singleton.Instance.MClientsList);
             return View();
         }
 
@@ -285,9 +275,13 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
-                var st = Singleton.Instance.MClientsList.Find(x => x.DPI == dpi);
-                Singleton.Instance.MClientsList.Remove(st);
-                return View("Search", st);
+                for (int i = 0; i < 3; i++)
+                {
+                    mover[i] = Singleton.Instance.MClientsList[i];
+                    Singleton.Instance.MCsecondList.Add(Singleton.Instance.MClientsList[i]);
+                    Singleton.Instance.MClientsList.Remove(mover[i]);
+                }
+                return View();
             }
             catch
             {
