@@ -42,6 +42,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         }
         public ActionResult move()
         {
+            for (int i = 0; i < 3; i++)
+            {
+                mover[i] = Singleton.Instance.MClientsList[i];
+                Singleton.Instance.MCsecondList.Add(Singleton.Instance.MClientsList[i]);
+                Singleton.Instance.MClientsList.Remove(mover[i]);
+            }
             return View();
         }
         #region Simulacion
@@ -264,12 +270,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    mover[i] = Singleton.Instance.MClientsList[i];
-                    Singleton.Instance.MCsecondList.Add(Singleton.Instance.MClientsList[i]);
-                    Singleton.Instance.MClientsList.Remove(mover[i]);
-                }
                 return View();
             }
             catch
