@@ -23,8 +23,8 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
     public class PROYECTController : Controller
     {
         #region EXTRAS
-        public int vac = 0;
-        public int nvac = 0;
+        public static int vac = 0;
+        public static int nvac = 0;
         public percentagepatients patper = new percentagepatients();
         public List<Patients> busqueda = new List<Patients>();
         public Patients Fecha = new Patients();
@@ -124,13 +124,14 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             patper.nonVaccinated = nvac;
             patper.vaccinated = vac;
+            int total = vac + nvac;
             if (nvac == 0)
             {
                 patper.Tvac = 100;
             }
             else
             {
-                patper.Tvac = (vac / nvac) * 100;
+                patper.Tvac = ((vac*100) / total);
             }
             return View(patper);
         }
@@ -170,22 +171,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 //AVLPatients.Add(pat.DPI);
                 #endregion
                 return RedirectToAction(nameof(VaccinateL));
-                //var pat = new Models.Patients
-                //{
-                //    Name = collection["Name"],
-                //    LastName = collection["LastName"],
-                //    DPI = Convert.ToInt32(collection["DPI"]),
-                //    town = collection["town"],
-                //    Department = collection["Department"],
-                //    Priority = collection["Priority"],
-                //    Date = Convert.ToDateTime(collection["Date"])
-                //};
-                //Singleton.Instance.MCsecondList.Add(pat);
-                //vac += 1;
-                ////HASH de personas vacunadas
-                //int Code = tableH2.Fhash(pat.Name, pat.LastName);
-                //tableH2.array[Code].Add(pat);
-                //return RedirectToAction(nameof(VaccinateL));
             }
             catch
             {
