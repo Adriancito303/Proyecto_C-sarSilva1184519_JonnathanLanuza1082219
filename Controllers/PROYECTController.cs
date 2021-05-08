@@ -189,6 +189,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
+                //validar dpi de 13 digitos
                 //string dpi = collection["DPI"].ToString();
                 //if (dpi.Length != 13)
                 //{
@@ -210,7 +211,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 //HASH de personas no vacunadas
                 int Code = tableH.Fhash(pat.Name, pat.LastName);
                 tableH.array[Code].Add(pat);
-                #region notouch
+                #region envio
                 //Enviar codigo hash a AVL para ordenar
                 //AVLPatients.Add(pat.DPI);
                 #endregion
@@ -218,7 +219,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Index));
             }
         }
 
@@ -254,7 +255,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         // GET: PROYECT/Delete/5
         public ActionResult Delete(int Dpi)
         {
-            #region notouch2
             //var sr = Singleton.Instance.MClientsList.Find(c => c.Name == Name);
             //for (int i = 0; i < Singleton.Instance.MClientsList.Count(); i++)
             //{
@@ -264,7 +264,6 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             //    } while (Name == Singleton.Instance.MClientsList[i].Name);
             //}
             //return View("Search", Singleton.Instance.MClientsList);
-            #endregion
             return View();
         }
 
