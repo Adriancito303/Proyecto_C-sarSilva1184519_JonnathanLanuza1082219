@@ -37,24 +37,15 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         //Modificar tamaño tabla 
         public ActionResult Index()
         {
-            Singleton.Instance.MCsecondList.Clear();
-            return View(Singleton.Instance.MClientsList);
+            return View();
         }
         #region Simulacion
         public ActionResult Simulation()
         {
-            return View(Singleton.Instance.MCthirdList);
+            Singleton.Instance.MCsecondList.Clear();
+            return View(Singleton.Instance.MClientsList);
         }
         #endregion
-        public ActionResult Manual()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Manual(int i)
-        {
-            return View();
-        }
         // GET: PROYECT/Details/5
         //Detalles completos de la persona
         public ActionResult Details()
@@ -122,7 +113,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Simulation));
             }
             //busqueda por medio de AVL(llamar clase AVL)
             #endregion
@@ -148,12 +139,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             try
             {
-                string dpi = collection["DPI"].ToString();
-                if (dpi.Length != 13)
-                {
-                    ModelState.AddModelError("DPI", "Please enter 13-digit DPI number");
-                    return View("Create");
-                }
+                //string dpi = collection["DPI"].ToString();
+                //if (dpi.Length != 13)
+                //{
+                //    ModelState.AddModelError("DPI", "Please enter 13-digit DPI number");
+                //    return View("Create");
+                //}
                 var pat = new Models.Patients
                 {
                     Name = collection["Name"],
@@ -165,11 +156,31 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                     Date = Convert.ToDateTime(collection["Date"])
                 };
                 Singleton.Instance.MCsecondList.Add(pat);
-                vac += 1;
-                //HASH de personas vacunadas
+                nvac += 1;
+                //HASH de personas no vacunadas
                 int Code = tableH2.Fhash(pat.Name, pat.LastName);
                 tableH2.array[Code].Add(pat);
+                #region envio
+                //Enviar codigo hash a AVL para ordenar
+                //AVLPatients.Add(pat.DPI);
+                #endregion
                 return RedirectToAction(nameof(VaccinateL));
+                //var pat = new Models.Patients
+                //{
+                //    Name = collection["Name"],
+                //    LastName = collection["LastName"],
+                //    DPI = Convert.ToInt32(collection["DPI"]),
+                //    town = collection["town"],
+                //    Department = collection["Department"],
+                //    Priority = collection["Priority"],
+                //    Date = Convert.ToDateTime(collection["Date"])
+                //};
+                //Singleton.Instance.MCsecondList.Add(pat);
+                //vac += 1;
+                ////HASH de personas vacunadas
+                //int Code = tableH2.Fhash(pat.Name, pat.LastName);
+                //tableH2.array[Code].Add(pat);
+                //return RedirectToAction(nameof(VaccinateL));
             }
             catch
             {
@@ -215,11 +226,11 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 //Enviar codigo hash a AVL para ordenar
                 //AVLPatients.Add(pat.DPI);
                 #endregion
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Simulation));
             }
             catch
             {
-                return RedirectToAction(nameof(Index));
+                return View();
             }
         }
 
@@ -243,7 +254,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
                 }
                 else
                 {
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Simulation));
                 }
             }
             catch
@@ -280,7 +291,7 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             }
             catch
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Simulation));
             }
         }
     }
