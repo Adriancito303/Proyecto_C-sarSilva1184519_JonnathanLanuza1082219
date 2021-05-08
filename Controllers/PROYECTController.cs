@@ -30,10 +30,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         public Patients Fecha = new Patients();
         public List<Patients> simulacion = new List<Patients>();
         public List<Patients> register = new List<Patients>();
-        public HASHT tableH = new HASHT(100);
-        public HASHT2 tableH2 = new HASHT2(100);
         public List<Patients> move = new List<Patients>();
         #endregion
+        public HASHT tableH = new HASHT(100);
+        public HASHT2 tableH2 = new HASHT2(100);
         // GET: PROYECT
         //Modificar tamaño tabla 
         public ActionResult Index()
