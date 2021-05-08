@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
+<h4>Simulation OFF</h4>
 <h1>Proyect Vaccination COVID-19 / 2021</h1>
 <p style="color:#ff004b">↓ CLICK HERE TO SEE USER MANUAL</p>
 <p>
@@ -30,10 +31,6 @@
     <input type="submit" asp-action="Search" /></br>
 </form>
 </br>
-<p style="color:#48e030">↓ CLICK HERE TO BEGIN SIMULATION</p>
-<p>
-    <a asp-action="Simulation">Begin simulation</a>
-</p>
 <table class="table" border="1">
     <thead>
         <tr>
@@ -75,4 +72,8 @@
             </tr>
         }
     </tbody>
-</table>    
+</table>
+<p style="color:#48e030">↓ CLICK HERE TO BEGIN SIMULATION</p>
+<p>
+    <a asp-action="Simulation">Begin simulation</a>
+</p>
