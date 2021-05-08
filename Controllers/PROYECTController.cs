@@ -40,6 +40,10 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
         {
             return View();
         }
+        public ActionResult move()
+        {
+            return View();
+        }
         #region Simulacion
         public ActionResult Simulation()
         {
