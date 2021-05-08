@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-<h1>Wait List for Vaccination COVID-19 / 2021</h1>
+<h1>Proyect Vaccination COVID-19 / 2021</h1>
 <p style="color:#ff004b">↓ CLICK HERE TO SEE USER MANUAL</p>
 <p>
     <a asp-action="Manual">Instructions</a>
@@ -69,7 +69,7 @@
                     @Html.DisplayFor(modelItem => item.town)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })|
                     @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
                 </td>
             </tr>

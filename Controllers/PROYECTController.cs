@@ -40,15 +40,12 @@ namespace Proyecto_CésarSilva1184519_JonnathanLanuza1082219.Controllers
             Singleton.Instance.MCsecondList.Clear();
             return View(Singleton.Instance.MClientsList);
         }
+        #region Simulacion
         public ActionResult Simulation()
         {
-            return View();
+            return View(Singleton.Instance.MCthirdList);
         }
-        [HttpPost]
-        public ActionResult Simulation(string Name)
-        {
-            return View();
-        }
+        #endregion
         public ActionResult Manual()
         {
             return View();
